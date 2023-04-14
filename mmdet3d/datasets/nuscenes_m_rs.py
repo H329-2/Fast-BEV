@@ -63,7 +63,7 @@ class NuScenesMonoiView(NuScenesMultiViewDataset):
     def get_data_info(self, index):
         data_info = super().get_data_info(index)
         sample_token = data_info['sample_idx']
-        data_info['img_info'] = data_info['img_info'][0]
+        # data_info['img_info'] = data_info['img_info'][0]
 
         if 'ann_info' in data_info:
             # get bev segm map
@@ -146,9 +146,9 @@ class NuScenesMonoiView(NuScenesMultiViewDataset):
             # draw nus (real GT)
             self.nusc.render_sample_data(self.nusc.get('sample', sample_token)['data']['LIDAR_TOP'], axes_limit=50,out_path='trash/bev_nus.png')
             mmcv.imwrite(mmcv.imresize_like(mmcv.imread('figs/bev_nus.png'), bev_seg_road), 'figs/bev_nus.png')
-        import json
-        with open("data.json", "w") as f:
-            json.dump(data_info, f)
+        # import json
+        # with open("data.json", "w") as f:
+        #     json.dump(data_info, f)
 
         return data_info
 

@@ -1,0 +1,1 @@
+{"sample_idx": "08e76760a8c64a92a86686baf68f6aff", "img_prefix": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "img_info": {"filename": "./data/nuscenes/samples/CAM_FRONT/n015-2018-07-11-11-54-16+0800__CAM_FRONT__1531281440762476.jpg"}, "lidar2img": {"extrinsic": [

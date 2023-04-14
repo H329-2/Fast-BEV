@@ -112,7 +112,7 @@ class_names = [
     'car', 'truck', 'trailer', 'bus', 'construction_vehicle', 'bicycle',
     'motorcycle', 'pedestrian', 'traffic_cone', 'barrier'
 ]
-dataset_type = 'NuScenesMultiView_Map_Dataset2'
+dataset_type = 'NuScenesMonoiView'
 data_root = './data/nuscenes/'
 # Input modality for nuScenes dataset, this is consistent with the submission
 # format which requires the information in input_modality.
@@ -150,7 +150,7 @@ file_client_args = dict(backend='disk')
 #         data_root: 'public-1424:s3://openmmlab/datasets/detection3d/nuscenes/'}))
 
 train_pipeline = [
-    dict(type='MultiViewPipeline', sequential=True, n_images=6, n_times=4, transforms=[
+    dict(type='MonoViewPipeline_Dev', sequential=True, n_images=6, n_times=4, transforms=[
         dict(
             type='LoadImageFromFile',
             file_client_args=file_client_args)]),
@@ -186,7 +186,7 @@ train_pipeline = [
                                  'gt_bboxes_3d', 'gt_labels_3d',
                                  'gt_bev_seg'])]
 test_pipeline = [
-    dict(type='MultiViewPipeline', sequential=True, n_images=6, n_times=4, transforms=[
+    dict(type='MonoViewPipeline_Dev', sequential=True, n_images=6, n_times=4, transforms=[
         dict(
             type='LoadImageFromFile',
             file_client_args=file_client_args)]),
