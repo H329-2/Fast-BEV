@@ -27,6 +27,7 @@ from .sunrgbd_dataset import SUNRGBDDataset
 from .utils import get_loading_pipeline
 from .waymo_dataset import WaymoDataset
 from .dataset_wrappers import *
+from .nuscenes_m_rs import NuScenesMonoiView
 
 
 __all__ = [
@@ -42,5 +43,5 @@ __all__ = [
     'WaymoDataset', 'BackgroundPointsFilter', 'VoxelBasedPointSampler',
     'get_loading_pipeline', 'RandomDropPointsColor', 'RandomJitterPoints',
     'ObjectNameFilter', 'InternalDataset', 'NuScenesMultiViewDataset',
-    'NuScenesMultiView_Map_Dataset2'
+    'NuScenesMultiView_Map_Dataset2', 'NuScenesMonoiView'
 ]
