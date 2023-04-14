@@ -17,7 +17,7 @@ from .transforms_3d import (BackgroundPointsFilter, GlobalAlignment,
 
 from .multi_view import (MultiViewPipeline, RandomShiftOrigin, KittiSetOrigin,
                          KittiRandomFlip, SunRgbdSetOrigin, SunRgbdTotalLoadImageFromFile,
-                         SunRgbdRandomFlip)
+                         SunRgbdRandomFlip, MonoViewPipeline_Dev)
 
 __all__ = [
     'ObjectSample', 'RandomFlip3D', 'ObjectNoise', 'GlobalRotScaleTrans',
