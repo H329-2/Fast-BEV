@@ -154,30 +154,30 @@ class FastBEV_RS(BaseDetector):
         #这里已经拿到了特征值
 
 
-        if self.multi_scale_id is not None:
-            mlvl_feats_ = []
-            for msid in self.multi_scale_id:
-                # fpn output fusion
-                if getattr(self, f'neck_fuse_{msid}', None) is not None:
-                    fuse_feats = [mlvl_feats[msid]]
-                    for i in range(msid + 1, len(mlvl_feats)):
-                        resized_feat = resize(
-                            mlvl_feats[i], 
-                            size=mlvl_feats[msid].size()[2:], 
-                            mode="bilinear", 
-                            align_corners=False)
-                        fuse_feats.append(resized_feat)
+        # if self.multi_scale_id is not None:
+        #     mlvl_feats_ = []
+        #     for msid in self.multi_scale_id:
+        #         # fpn output fusion
+        #         if getattr(self, f'neck_fuse_{msid}', None) is not None:
+        #             fuse_feats = [mlvl_feats[msid]]
+        #             for i in range(msid + 1, len(mlvl_feats)):
+        #                 resized_feat = resize(
+        #                     mlvl_feats[i], 
+        #                     size=mlvl_feats[msid].size()[2:], 
+        #                     mode="bilinear", 
+        #                     align_corners=False)
+        #                 fuse_feats.append(resized_feat)
                 
-                    if len(fuse_feats) > 1:
-                        fuse_feats = torch.cat(fuse_feats, dim=1)
-                    else:
-                        fuse_feats = fuse_feats[0]
-                    fuse_feats = getattr(self, f'neck_fuse_{msid}')(fuse_feats)
-                    mlvl_feats_.append(fuse_feats)
-                else:
-                    # this section is selected
-                    mlvl_feats_.append(mlvl_feats[msid])
-            mlvl_feats = mlvl_feats_
+        #             if len(fuse_feats) > 1:
+        #                 fuse_feats = torch.cat(fuse_feats, dim=1)
+        #             else:
+        #                 fuse_feats = fuse_feats[0]
+        #             fuse_feats = getattr(self, f'neck_fuse_{msid}')(fuse_feats)
+        #             mlvl_feats_.append(fuse_feats)
+        #         else:
+        #             # this section is selected
+        #             mlvl_feats_.append(mlvl_feats[msid])
+        #     mlvl_feats = mlvl_feats_
         
         
         # v3 bev ms and is not useful in v1
@@ -206,7 +206,7 @@ class FastBEV_RS(BaseDetector):
                 volumes = []
                 for batch_id, seq_img_meta in enumerate(img_metas):
                     feat_i = mlvl_feat_split[seq_id][batch_id]  # [nv, c, h, w]
-                    img_meta = copy.deepcopy(seq_img_meta)[0]
+                    img_meta = copy.deepcopy(seq_img_meta)
                     img_meta["lidar2img"]["extrinsic"] = img_meta["lidar2img"]["extrinsic"][seq_id*6:(seq_id+1)*6]
                     if isinstance(img_meta["img_shape"], list):
                         img_meta["img_shape"] = img_meta["img_shape"][seq_id*6:(seq_id+1)*6]

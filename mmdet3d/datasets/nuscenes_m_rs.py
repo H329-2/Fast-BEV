@@ -63,7 +63,7 @@ class NuScenesMonoiView(NuScenesMultiViewDataset):
     def get_data_info(self, index):
         data_info = super().get_data_info(index)
         sample_token = data_info['sample_idx']
-        # data_info['img_info'] = data_info['img_info'][0]
+        data_info['img_info'] = data_info['img_info'][0]
 
         if 'ann_info' in data_info:
             # get bev segm map

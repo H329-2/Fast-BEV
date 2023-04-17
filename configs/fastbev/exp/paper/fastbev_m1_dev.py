@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 model = dict(
-    type='FastBEV',
+    type='FastBEV_RS',
     style="v1",
     backbone=dict(
         type='ResNet',

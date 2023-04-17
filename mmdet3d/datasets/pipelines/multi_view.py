@@ -80,13 +80,13 @@ class MonoViewPipeline_Dev:
         else:
             # assert len(results['img_info']) == 6 * self.n_times, f'img info: {len(results["img_info"])}, n_times: {self.n_times}'
             ids_list = np.arange(len(results['img_info'])).tolist()
-        for i in ids_list:
-            _results = dict()
-            for key in ['img_prefix', 'img_info']:
-                _results[key] = results[key][i]
-            _results = self.transforms(_results)
-            imgs.append(_results['img'])
-            extrinsics.append(results['lidar2img']['extrinsic'][i])
+        # for i in ids_list:
+        _results = dict()
+        _results['img_prefix'] = results['img_prefix'][0]
+        _results['img_info'] = results['img_info']
+        _results = self.transforms(_results)
+        imgs.append(_results['img'])
+        extrinsics.append(results['lidar2img']['extrinsic'][0])
         for key in _results.keys():
             if key not in ['img', 'img_prefix', 'img_info']:
                 results[key] = _results[key]
