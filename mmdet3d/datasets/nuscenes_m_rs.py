@@ -128,8 +128,8 @@ class NuScenesMonoiView(NuScenesMultiViewDataset):
                 data_info['ann_info']['bboxes'] = gt_bboxes_mv 
                 data_info['ann_info']['labels'] = gt_labels_mv 
                 data_info['ann_info']['bboxes_ignore'] = gt_bboxes_ignore_mv 
-                data_info['ann_info']['gt_bboxes_3d'] = coco_info['bbox_cam3d']
-                data_info['ann_info']['gt_labels_3d'] = gt_labels_mv
+            data_info['ann_info']['gt_bboxes_3d'] = coco_info['bbox_cam3d']
+            data_info['ann_info']['gt_labels_3d'] = gt_labels_mv
 
         if self.debug:
             print('### debug vis in <get_data_info> ###')
